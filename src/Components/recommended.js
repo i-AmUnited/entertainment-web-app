@@ -32,7 +32,7 @@ const Recommended = () => {
         {countries.map((country) =>  (
         // <Link to={`/${country.name}`}>
           <div key={country.id} className="rounded-md">
-            <img  key={country.id}  src={country.image} alt="" className="w-full h-48 object-cover rounded-md drop-shadow" />
+            <img  key={country.id}  src={`https://image.tmdb.org/t/p/w300` + country.poster_path} alt="" className="w-full h-36 object-cover rounded-md drop-shadow" />
             <p className='py-3 text-xs'>{country.title == null ? country.name: country.title}</p>
           </div>
         // </Link>

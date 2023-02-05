@@ -1,12 +1,10 @@
 import React from "react";
 import Sidebar from "../Components/sidebar";
-import Trending from "../Components/trending";
-import Recommended from "../Components/recommended";
-import Search from "../Components/Search";
+import AllMovies from "../Components/AllMovies";
 
-const Dashboard = () => {
+const Movies = () => {
 
-  document.title = "Dashboard"
+    document.title = "Movies"
 
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-12 bg-[#10141F] text-white">
@@ -15,13 +13,11 @@ const Dashboard = () => {
             </div>
             <div className="col-span-11 p-5">
               <div className="grid gap-10">
-                <Search />
-                <Trending />
-                <Recommended />
+                <AllMovies />
               </div>
             </div>
         </div>
      );
 }
  
-export default Dashboard;
+export default Movies;

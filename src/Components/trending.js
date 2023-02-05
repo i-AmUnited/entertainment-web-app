@@ -6,7 +6,7 @@ const Trending = () => {
     return ( 
         
           <div className="bg-slate-400">
-            <div className="flex flex-grow gap-4 overflow-x-scroll p-2">
+            <div className="flex ">
               {
                list.map((item) => (
                  <div className="h-[100px] bg-white">

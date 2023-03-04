@@ -1,15 +1,10 @@
-const ContentDetail = ({year, icon, category, rating, title}) => {
+const ContentDetail = ({year, genre, title}) => {
     return ( 
         <div>
-          <div className="flex gap-5 text-xs opacity-75">
-            <div>{year}</div>
-            <div className="items-center flex gap-1">
-              <span><img src={icon} alt="" className=" w-3"/></span>
-              <span className="capitalize">{category}</span>
-            </div>
-            <div>{rating}</div>
-          </div>
-          <div>{title}</div>
+          <div className="truncate text-sm font-bold">{title}</div>
+          <div className="text-xs opacity-50 four_chars">{year}</div>
+          {/* <div className="text-xs font-bold opacity-75"> {airDate}</div> */}
+          {/* <div className="text-xs opacity-50">{genre}</div> */}
         </div>
      );
 }

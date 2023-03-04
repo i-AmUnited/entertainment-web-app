@@ -9,7 +9,8 @@ import avatar from "../images/Profile.svg"
 const Loading = () => {
   return (
     <div>
-      <p>Loading movies...</p>
+      <p>Loading....</p>
+      print('taye');
     </div>
   );
 };
@@ -34,7 +35,8 @@ const Recommended = () => {
     };
 
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=72a11b158b57f6cc258d85d0d425ea98&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${activePage}&with_watch_monetization_types=flatrate`,
+      `
+      https://api.themoviedb.org/3/discover/movie?api_key=72a11b158b57f6cc258d85d0d425ea98&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${activePage}&release_date.gte=1985-01-01&release_date.lte=2002-12-30&with_genres=28&without_genres=16&watch_region=US&with_watch_monetization_types=flatrate`,
       requestOptions
     )
       .then((res) => res.json())
@@ -127,7 +129,7 @@ const Recommended = () => {
   async function searchCountry() {
     if (searchText.length === 0) {
       fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=72a11b158b57f6cc258d85d0d425ea98&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=72a11b158b57f6cc258d85d0d425ea98&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${activePage}&release_date.gte=1985-01-01&release_date.lte=2002-12-30&with_genres=28&without_genres=16&watch_region=US&with_watch_monetization_types=flatrate`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -152,97 +154,9 @@ const Recommended = () => {
     searchCountry();
   }
 
-//   const local_genre_ids = [28,12,53];
-//   const genres = [
-//     {
-//       "id": 28,
-//       "name": "Action"
-//       },
-//       {
-//       "id": 12,
-//       "name": "Adventure"
-//       },
-//       {
-//       "id": 16,
-//       "name": "Animation"
-//       },
-//       {
-//       "id": 35,
-//       "name": "Comedy"
-//       },
-//       {
-//       "id": 80,
-//       "name": "Crime"
-//       },
-//       {
-//       "id": 99,
-//       "name": "Documentary"
-//       },
-//       {
-//       "id": 18,
-//       "name": "Drama"
-//       },
-//       {
-//       "id": 10751,
-//       "name": "Family"
-//       },
-//       {
-//       "id": 14,
-//       "name": "Fantasy"
-//       },
-//       {
-//       "id": 36,
-//       "name": "History"
-//       },
-//       {
-//       "id": 27,
-//       "name": "Horror"
-//       },
-//       {
-//       "id": 10402,
-//       "name": "Music"
-//       },
-//       {
-//       "id": 9648,
-//       "name": "Mystery"
-//       },
-//       {
-//       "id": 10749,
-//       "name": "Romance"
-//       },
-//       {
-//       "id": 878,
-//       "name": "Science Fiction"
-//       },
-//       {
-//       "id": 10770,
-//       "name": "TV Movie"
-//       },
-//       {
-//       "id": 53,
-//       "name": "Thriller"
-//       },
-//       {
-//       "id": 10752,
-//       "name": "War"
-//       },
-//       {
-//       "id": 37,
-//       "name": "Western"
-//       }
-//     ];
-
-// const genreNames = local_genre_ids.map(
-//   (id) => genres.find((genre) => genre.id === id)?.name
-// );
-
-// const genreName = genreNames.length > 0 ? genreNames.join(", ") : "Unknown";
-// console.log(genreName);
-
-
   return (
     <div className="mt-10">
-      <p className="text-[16px] font-bold">Discover movies</p>
+      <p className="text-[16px] font-bold">Classic action movies</p>
       <div className="grid grid-cols-1 md:grid-cols-4 mt-4 mb-6 space-y-6">
         <div className="md:col-span-3">
           <form onSubmit={handleSearchCountry}>
@@ -259,7 +173,7 @@ const Recommended = () => {
           <div onClick={() => setActivePage(activePage === 1 ? 1 : 1)}>
             <img src={first} alt="" />
           </div>
-          <div onClick={() => setActivePage(activePage === 1 ? 1 : activePage - 1)}>
+          <div onClick={() => setActivePage(activePage - 1)}>
             <img
               src={previous}
               alt=""
@@ -267,14 +181,14 @@ const Recommended = () => {
             />
           </div>
           <div className="text-xs opacity-40">Page {activePage}</div>
-          <div onClick={() => setActivePage(activePage === 200 ? 200 : activePage + 1)}>
+          <div onClick={() => setActivePage(activePage === 61 ? 61 : activePage + 1)}>
             <img
               src={next}
               alt=""
               className="p-1 rounded-full border bg-white/10 cursor-pointer"
             />
           </div>
-          <div onClick={() => setActivePage(200)}>
+          <div onClick={() => setActivePage(61)}>
             <img src={last} alt="" />
           </div>
         </div>
@@ -300,10 +214,7 @@ const Recommended = () => {
                   : country.release_date
               }
               title={country.title == null ? country.name : country.title}
-              // genre={local_genre_ids.toString().includes(country.genre_ids.toString()) ? genreName : "..."}
             />
-            {/* {genreName} {local_genre_ids.toString()} */}
-
           </div>
         ))}
         {loading ? (
@@ -417,6 +328,3 @@ const Recommended = () => {
 };
 
 export default Recommended;
-
-
-// {country.genre_ids.toString() === local_genre_ids.toString() ? genreName : "cooking"}

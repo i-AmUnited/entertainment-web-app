@@ -1,8 +1,7 @@
 import React from "react";
 import Sidebar from "../Components/sidebar";
 import Trending from "../Components/trending";
-import Recommended from "../Components/recommended";
-import Search from "../Components/Search";
+import Recommended from "../Components/recommendedFixed";
 
 const Dashboard = () => {
 
@@ -14,11 +13,8 @@ const Dashboard = () => {
               <Sidebar />
             </div>
             <div className="col-span-11 p-5">
-              <div className="grid gap-10">
-                <Search />
                 <Trending />
                 <Recommended />
-              </div>
             </div>
         </div>
      );

@@ -1,7 +1,6 @@
 import Dashboard from '../images/dashboard-fill.svg'
 import Movie from '../images/film-fill.svg'
 import Series from '../images/tv-2-fill.svg'
-import Bookmark from '../images/bookmark-fill.svg'
 import Logo from '../images/vip-crown-2-fill.svg'
 import Profile from '../images/profile-pic.jpg'
 import { Link } from 'react-router-dom'
@@ -18,11 +17,10 @@ const Sidebar = () => {
           <div className="p-3 md:justify-center grid">
             <img src={Logo} alt="" />
           </div>
-          <div className="p-3 gap-8 flex md:grid md:justify-center">
+          <div className="p-3 gap-10 flex md:grid md:justify-center">
             <Link to="/"><img src={Dashboard} alt="" className={document.title === "Dashboard" ? currentPage: otherPage } /></Link>
             <Link to="/movies"><img src={Movie} alt="" className={document.title === "Movies" ? currentPage: otherPage } /></Link>
             <Link to="/tv"><img src={Series} alt="" className={document.title === "Tv Shows" ? currentPage: otherPage }/></Link>
-            <div><img src={Bookmark} alt="" /></div>
           </div>
           <div className="p-3">
             <img src={Profile} alt="" className='rounded-full border-2 border-gray-50 w-8'/>
